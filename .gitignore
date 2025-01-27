@@ -1,5 +1,7 @@
 # dependencies
 /node_modules
+/.pnp
+.pnp.js
 
 # testing
 /coverage
@@ -24,9 +26,15 @@ yarn-error.log*
 # IDE
 .idea/
 .vscode/
+*.swp
+*.swo
 
 # Don't ignore icons
 !public/assets/icons/
 !public/favicon.ico
 !public/assets/icons/*.png
-!public/assets/icons/*.svg 
+!public/assets/icons/*.svg
+
+# cache
+.cache/
+.eslintcache 

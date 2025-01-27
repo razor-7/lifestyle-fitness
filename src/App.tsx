@@ -6,6 +6,7 @@ import About from './pages/About';
 import LiveClasses from './pages/LiveClasses';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
+import FAQ from './pages/FAQ';
 import { ThemeProvider } from './context/ThemeContext';
 import { PreferencesProvider } from './context/PreferencesContext';
 import styled from 'styled-components';
@@ -48,6 +49,7 @@ const App: React.FC = () => {
               <Route path="/live-classes" element={<LiveClasses />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/faq" element={<FAQ />} />
             </Routes>
           </main>
         </Router>

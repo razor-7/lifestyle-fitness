@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Hero from '../components/Hero/Hero';
@@ -8,6 +9,8 @@ import Trainers from '../components/Trainers/Trainers';
 import MembershipPlans from '../components/MembershipPlans/MembershipPlans';
 import Testimonials from '../components/Testimonials/Testimonials';
 import CallToAction from '../components/CallToAction/CallToAction';
+import Footer from '../components/Footer/Footer';
+import { scrollToSection } from '../utils/scrollToSection';
 
 const HomePage = styled.main.attrs({
   role: 'main',
@@ -75,6 +78,16 @@ const Home: React.FC = () => {
     restDelta: 0.001
   });
 
+  const location = useLocation();
+  
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      setTimeout(() => {
+        scrollToSection(location.state.scrollTo);
+      }, 100);
+    }
+  }, [location.state]);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth) * 100;
@@ -115,6 +128,7 @@ const Home: React.FC = () => {
       </motion.div>
 
       <motion.div
+        id="services"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -124,6 +138,7 @@ const Home: React.FC = () => {
       </motion.div>
 
       <motion.div
+        id="programs"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -133,6 +148,7 @@ const Home: React.FC = () => {
       </motion.div>
 
       <motion.div
+        id="trainers"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -142,6 +158,7 @@ const Home: React.FC = () => {
       </motion.div>
 
       <motion.div
+        id="membership"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -166,6 +183,15 @@ const Home: React.FC = () => {
         variants={sectionVariants}
       >
         <CallToAction />
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={sectionVariants}
+      >
+        <Footer />
       </motion.div>
 
       <FloatingButton
